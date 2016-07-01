@@ -24,6 +24,14 @@
  */
 - (NSDictionary *)modifyOperatorList;
 
+
+/**
+ *  逆修饰操作符，英文符号化
+ *
+ *  @return 返回逆修饰的操作符
+ */
+- (NSDictionary *)reModifyOperatorList;
+
 /**
  *  加法运算
  *

@@ -23,6 +23,8 @@
 
 - (double)computeExpression:(NSString *)expression
 {
+    //检查表达式语法是否合法
+    
     //过滤多余的空格
     NSString *exp = [self filterSpace:expression];
     //修饰表达式
@@ -53,7 +55,9 @@
  */
 - (NSArray *)elementsModify:(NSString *)modifyOper andElements:(NSMutableArray *)elements
 {
-    NSDictionary *modifyOperDic = @{@"<SUB>":@"-", @"<DIV>":@"1/"};
+    //获取逆修饰运算符
+    Operator *oper = [Operator new];
+    NSDictionary *modifyOperDic = [oper reModifyOperatorList];
     
     //元素修饰
     for (NSMutableString *mNumber in elements)
@@ -142,13 +146,16 @@
     
     for (NSString *number in elements)
     {
+        //检查分数
         NSRange range = [number rangeOfString:@"/"];
         if(range.location <= number.length-1)
         {
+            //如果遇到分数，就拆分分子和分母
             NSArray *fenshu = [number componentsSeparatedByString:@"/"];
             if(fenshu.count == 2)
             {
-                product *= [fenshu.firstObject doubleValue] / [fenshu.lastObject doubleValue];
+                //然后计算分数的值
+                product *= 1.0f / [fenshu.lastObject doubleValue];
             }
         }
         else
@@ -160,7 +167,13 @@
     return product;
 }
 
-
+/**
+ *  过滤空格
+ *
+ *  @param expression 传入表达式
+ *
+ *  @return 返回过滤之后的表达式
+ */
 - (NSString *)filterSpace:(NSString *)expression
 {
     NSMutableString *mExpression = [expression mutableCopy];
@@ -182,6 +195,9 @@
     
     return [mExpression copy];
 }
+
+
+
 
 
 @end
