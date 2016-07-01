@@ -50,14 +50,8 @@
         [mNumber replaceCharactersInRange:range withString:@"-"];
     }
     
-    //求和
-    double sum = 0;
-    for (NSString *number in addtionElements)
-    {
-        sum += [number doubleValue];
-    }
-    
-    return sum;
+    //计算加法操作
+    return [self addCompute:[addtionElements copy]];
 }
 
 
