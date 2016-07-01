@@ -12,7 +12,7 @@
 int ApplicationMain(int argc, const char **argv)
 {
     Calculator *cal = [Calculator calcuator];
-    long double result = [cal computeExpression:@"10+50-5*6"];
+    long double result = [cal computeExpression:@"10 + 50 - 5 * 6 "];
     
     NSLog(@"result = %Lg", result);
     
