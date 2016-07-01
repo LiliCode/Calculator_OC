@@ -18,6 +18,13 @@
 - (NSArray *)operatorList;
 
 /**
+ *  修饰操作符，英文化操作符
+ *
+ *  @return 返回被修饰会的操作符字典
+ */
+- (NSDictionary *)modifyOperatorList;
+
+/**
  *  加法运算
  *
  *  @param a 被加数

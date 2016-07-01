@@ -12,9 +12,10 @@
 int ApplicationMain(int argc, const char **argv)
 {
     Calculator *cal = [Calculator calcuator];
-    double result = [cal computeExpression:@"10 + 50 - 5 * 6 "];
+    NSString *expression = @"23 - 43 + 12 + 3";
+    double result = [cal computeExpression:expression];
     
-    NSLog(@"result = %g", result);
+    NSLog(@"%@ = %g", expression, result);
     
     return 0;
 }

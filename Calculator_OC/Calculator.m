@@ -9,6 +9,11 @@
 #import "Calculator.h"
 #import "Operator.h"
 
+@interface Calculator()
+
+
+@end
+
 @implementation Calculator
 
 + (instancetype)calcuator
@@ -23,10 +28,36 @@
     //修饰表达式
     NSString *modiExp = [self modificationExpression:exp];
     //元素拆分
+    //获取被修饰的操作符
+    Operator *oper = [Operator new];
+    NSDictionary *modifyOperDic = [oper modifyOperatorList];
+    NSMutableArray *addtionElements = [NSMutableArray new];
+    NSArray *tempElements = [modiExp componentsSeparatedByString:modifyOperDic[@"+"]];
+    for (NSString *numberString in tempElements)
+    {
+        [addtionElements addObject:[numberString mutableCopy]];
+    }
     
+    //元素修饰
+    for (NSMutableString *mNumber in addtionElements)
+    {
+        NSRange range = [mNumber rangeOfString:@"<SUB>"];
+        if(range.location >= mNumber.length-1)
+        {
+            continue;
+        }
+        
+        [mNumber replaceCharactersInRange:range withString:@"-"];
+    }
     
+    //求和
+    double sum = 0;
+    for (NSString *number in addtionElements)
+    {
+        sum += [number doubleValue];
+    }
     
-    return .0f;
+    return sum;
 }
 
 
@@ -44,16 +75,25 @@
     //获取操作符列表
     Operator *oper = [Operator new];
     NSArray *list = [oper operatorList];
+    //获取被修饰的操作符
+    NSDictionary *modifyOperDic = [oper modifyOperatorList];
     //见缝插针
     for (NSString *op in list)
     {
-        if ([op isEqualToString:@"-"] || [op isEqualToString:@"/"])
-        {
-            continue;
-        }
-        
         //修饰
-        
+        NSRange range = NSMakeRange(0, mExpression.length);
+        //循环替换
+        while (range.location != NSNotFound)
+        {
+            range = [mExpression rangeOfString:op];
+            if(range.location >= mExpression.length-1)
+            {
+                break;
+            }
+            
+            //替换
+            [mExpression replaceCharactersInRange:range withString:modifyOperDic[op]];
+        }
     }
     
     return [mExpression copy];

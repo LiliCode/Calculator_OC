@@ -42,6 +42,13 @@
 }
 
 
+- (NSDictionary *)modifyOperatorList
+{
+    return @{@"+":@"<ADD>", @"-":@"<ADD><SUB>", @"*":@"<MUL>", @"/":@"<MUL><DIV>"};
+}
+
+
 @end
+
 
 
