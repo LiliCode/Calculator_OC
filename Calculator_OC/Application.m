@@ -12,7 +12,9 @@
 int ApplicationMain(int argc, const char **argv)
 {
     Calculator *cal = [Calculator calcuator];
-    NSString *expression = @"23 - 43 + 12 + 3";
+    
+    NSString *expression = @"100 / 25 * 3 / 0.4";
+    
     double result = [cal computeExpression:expression];
     
     NSLog(@"%@ = %g", expression, result);

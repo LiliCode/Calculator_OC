@@ -32,26 +32,42 @@
     Operator *oper = [Operator new];
     NSDictionary *modifyOperDic = [oper modifyOperatorList];
     NSMutableArray *addtionElements = [NSMutableArray new];
-    NSArray *tempElements = [modiExp componentsSeparatedByString:modifyOperDic[@"+"]];
+    NSArray *tempElements = [modiExp componentsSeparatedByString:modifyOperDic[@"*"]];
     for (NSString *numberString in tempElements)
     {
         [addtionElements addObject:[numberString mutableCopy]];
     }
     
+    //计算加法/乘法操作
+    return [self mulCompute:[self elementsModify:@"<DIV>" andElements:addtionElements]];
+}
+
+
+/**
+ *  元素修饰
+ *
+ *  @param modifyOper 需要修饰的符号
+ *  @param elements   元素
+ *
+ *  @return 返回被修饰的元素数组
+ */
+- (NSArray *)elementsModify:(NSString *)modifyOper andElements:(NSMutableArray *)elements
+{
+    NSDictionary *modifyOperDic = @{@"<SUB>":@"-", @"<DIV>":@"1/"};
+    
     //元素修饰
-    for (NSMutableString *mNumber in addtionElements)
+    for (NSMutableString *mNumber in elements)
     {
-        NSRange range = [mNumber rangeOfString:@"<SUB>"];
+        NSRange range = [mNumber rangeOfString:modifyOper];
         if(range.location >= mNumber.length-1)
         {
             continue;
         }
         
-        [mNumber replaceCharactersInRange:range withString:@"-"];
+        [mNumber replaceCharactersInRange:range withString:modifyOperDic[modifyOper]];
     }
     
-    //计算加法操作
-    return [self addCompute:[addtionElements copy]];
+    return elements;
 }
 
 
@@ -124,9 +140,21 @@
 {
     double product = 1;
     
-    for (NSNumber *number in elements)
+    for (NSString *number in elements)
     {
-        product *= [number doubleValue];
+        NSRange range = [number rangeOfString:@"/"];
+        if(range.location <= number.length-1)
+        {
+            NSArray *fenshu = [number componentsSeparatedByString:@"/"];
+            if(fenshu.count == 2)
+            {
+                product *= [fenshu.firstObject doubleValue] / [fenshu.lastObject doubleValue];
+            }
+        }
+        else
+        {
+            product *= [number doubleValue];
+        }
     }
     
     return product;
