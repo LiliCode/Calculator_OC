@@ -25,7 +25,7 @@
  *
  *  @return 返回结算结果
  */
-- (long double)computeExpression:(NSString *)expression;
+- (double)computeExpression:(NSString *)expression;
 
 
 @end
