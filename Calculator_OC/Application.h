@@ -1,5 +1,5 @@
 //
-//  main.m
+//  Application.h
 //  Calculator_OC
 //
 //  Created by 圈圈科技 on 16/7/1.
@@ -7,12 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Application.h"
 
-int main(int argc, const char * argv[])
-{
-    @autoreleasepool
-    {
-        return ApplicationMain(argc, argv);
-    }
-}
+
+int ApplicationMain(int argc, const char **argv);
