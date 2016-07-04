@@ -30,12 +30,17 @@
     NSString *exp = [self filterSpace:expression];
     //修饰表达式
     NSString *modiExp = [self modificationExpression:exp];
+    //处理括号
+    NSString *subBracketExp = [self disposeBracket:modiExp];
+    
+    
+    
     //元素拆分
     //获取被修饰的操作符
     Operator *oper = [Operator new];
     NSDictionary *modifyOperDic = [oper modifyOperatorList];
     NSMutableArray *addtionElements = [NSMutableArray new];
-    NSArray *tempElements = [modiExp componentsSeparatedByString:modifyOperDic[@"*"]];
+    NSArray *tempElements = [subBracketExp componentsSeparatedByString:modifyOperDic[@"*"]];
     for (NSString *numberString in tempElements)
     {
         [addtionElements addObject:[numberString mutableCopy]];
@@ -44,6 +49,7 @@
     //计算加法/乘法操作
     return [self mulCompute:[self elementsModify:@"<DIV>" andElements:addtionElements]];
 }
+
 
 
 /**
@@ -114,6 +120,23 @@
     return [mExpression copy];
 }
 
+/**
+ *  处理括号
+ *
+ *  @param expression 表达式。
+ *
+ *  @return 返回被处理的表达式
+ */
+- (NSString *)disposeBracket:(NSString *)expression
+{
+    NSMutableString *mExpression = [expression mutableCopy];
+    
+    
+    
+    
+    return [mExpression copy];
+}
+
 
 /**
  *  处理加法
@@ -167,6 +190,7 @@
     
     return product;
 }
+
 
 /**
  *  过滤空格
