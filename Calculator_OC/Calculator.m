@@ -30,10 +30,9 @@
     NSString *exp = [self filterSpace:expression];
     //修饰表达式
     NSString *modiExp = [self modificationExpression:exp];
+    //处理括号
+    NSString *subBracketExp = [self disposeBracket:modiExp];
     
-    NSRange subRange;
-    NSString *subString = [modiExp substringFromStart:@"(" andEnd:@")" range:&subRange];
-    NSLog(@"截取的字符串:%@ 截取位置:%ld 截取长度:%ld", subString, subRange.location, subRange.length);
     
     
     //元素拆分
@@ -41,7 +40,7 @@
     Operator *oper = [Operator new];
     NSDictionary *modifyOperDic = [oper modifyOperatorList];
     NSMutableArray *addtionElements = [NSMutableArray new];
-    NSArray *tempElements = [modiExp componentsSeparatedByString:modifyOperDic[@"*"]];
+    NSArray *tempElements = [subBracketExp componentsSeparatedByString:modifyOperDic[@"*"]];
     for (NSString *numberString in tempElements)
     {
         [addtionElements addObject:[numberString mutableCopy]];
@@ -122,6 +121,14 @@
 }
 
 
+- (NSString *)disposeBracket:(NSString *)expression
+{
+    
+    
+    return nil;
+}
+
+
 /**
  *  处理加法
  *
@@ -174,6 +181,7 @@
     
     return product;
 }
+
 
 /**
  *  过滤空格
