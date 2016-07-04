@@ -120,12 +120,21 @@
     return [mExpression copy];
 }
 
-
+/**
+ *  处理括号
+ *
+ *  @param expression 表达式。
+ *
+ *  @return 返回被处理的表达式
+ */
 - (NSString *)disposeBracket:(NSString *)expression
 {
+    NSMutableString *mExpression = [expression mutableCopy];
     
     
-    return nil;
+    
+    
+    return [mExpression copy];
 }
 
 
