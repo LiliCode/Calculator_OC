@@ -8,6 +8,7 @@
 
 #import "Calculator.h"
 #import "Operator.h"
+#import "NSString+Extension.h"
 #import <math.h>
 
 @interface Calculator()

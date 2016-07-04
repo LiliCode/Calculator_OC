@@ -12,6 +12,7 @@
 		024BA0471D26773D00E7005D /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BA0461D26773D00E7005D /* Calculator.m */; };
 		024BA04D1D268B8300E7005D /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BA04C1D268B8300E7005D /* Application.m */; };
 		024BA0511D26909C00E7005D /* Operator.m in Sources */ = {isa = PBXBuildFile; fileRef = 024BA0501D26909C00E7005D /* Operator.m */; };
+		2217C64E1D2ABFB400347512 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217C64D1D2ABFB400347512 /* Stack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		024BA04E1D268B9000E7005D /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		024BA04F1D26909C00E7005D /* Operator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operator.h; sourceTree = "<group>"; };
 		024BA0501D26909C00E7005D /* Operator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operator.m; sourceTree = "<group>"; };
+		2217C64C1D2ABFB400347512 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		2217C64D1D2ABFB400347512 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 				024BA0461D26773D00E7005D /* Calculator.m */,
 				024BA04F1D26909C00E7005D /* Operator.h */,
 				024BA0501D26909C00E7005D /* Operator.m */,
+				2217C64C1D2ABFB400347512 /* Stack.h */,
+				2217C64D1D2ABFB400347512 /* Stack.m */,
 				0216618C1D2A1449000EAE6F /* NSString+Extension.h */,
 				0216618D1D2A1449000EAE6F /* NSString+Extension.m */,
 			);
@@ -146,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2217C64E1D2ABFB400347512 /* Stack.m in Sources */,
 				0216618E1D2A1449000EAE6F /* NSString+Extension.m in Sources */,
 				024BA04D1D268B8300E7005D /* Application.m in Sources */,
 				024BA0511D26909C00E7005D /* Operator.m in Sources */,
