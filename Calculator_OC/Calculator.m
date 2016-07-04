@@ -8,6 +8,7 @@
 
 #import "Calculator.h"
 #import "Operator.h"
+#import "NSString+Extension.h"
 
 @interface Calculator()
 
@@ -29,6 +30,12 @@
     NSString *exp = [self filterSpace:expression];
     //修饰表达式
     NSString *modiExp = [self modificationExpression:exp];
+    
+    NSRange subRange;
+    NSString *subString = [modiExp substringFromStart:@"(" andEnd:@")" range:&subRange];
+    NSLog(@"截取的字符串:%@ 截取位置:%ld 截取长度:%ld", subString, subRange.location, subRange.length);
+    
+    
     //元素拆分
     //获取被修饰的操作符
     Operator *oper = [Operator new];
@@ -43,6 +50,7 @@
     //计算加法/乘法操作
     return [self mulCompute:[self elementsModify:@"<DIV>" andElements:addtionElements]];
 }
+
 
 
 /**
